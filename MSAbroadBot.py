@@ -26,7 +26,6 @@ def main():
 	r = praw.Reddit(user_agent=USER_AGENT)
 	r.login(USER, PASS, disable_warning=True)
 	subreddit = r.get_subreddit('india')        
-	#r.send_message('kashre001', 'Subject Line', 'You are awesome!')
 	
 	run = True
 	while run:
