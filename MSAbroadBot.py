@@ -26,21 +26,23 @@ def main():
 	r = praw.Reddit(user_agent=USER_AGENT)
 	r.login(USER, PASS, disable_warning=True)
 	subreddit = r.get_subreddit('india')        
+	#r.send_message('kashre001', 'Subject Line', 'You are awesome!')
 	
 	run = True
 	while run:
 		try:
 			comments = subreddit.get_comments()
-			print('Looking at randia\n')
+			#print('Looking at randia\n')
 		
 			#Check comments 
-			for c in comments:
-				print c.body
-				time.sleep(2)
+			for c in comments:				
+				time.sleep(3)
 				
 				#Did we recently check it? If so fetch new comments
 				if c.id in cache:
 					break
+				
+				print c.body
 				
 				#Add this to our cache
 				cache.append(c.id)
@@ -53,7 +55,7 @@ def main():
 						if reply.author.name == USERNAME:
 							already_done.add(c.id)
 					
-					if c.id not in already_done:
+					if c.id not in already_done:						
 						text = ''
 						text = fetch_body(text)
 						c.reply(text)
@@ -92,6 +94,8 @@ def check_comment(text):
 	elif 'graduate school' in text.lower() :
 		return True
 	elif 'higher education' in text.lower() :
+		return True
+	elif 'ms ' in text.lower() :
 		return True	
 	return False						
 
@@ -102,9 +106,9 @@ def fetch_body(text):
 	text += 'Come join us at /r/MsAbroad! \n\n'
 	text += 'We\'re here to help you out! :)\n'
 	text += '------------------------------------------------------------------\n'
-	text += 'I am just a BOT.\n'
-	text += 'Please don\'t hate on me.\n'
-	text += "PM /u/kashre001 if you have any issues â˜œ(âŒ’â–½âŒ’)â˜ž\n"	
+	text += 'I am just a BOT.\n\n'
+	text += 'Please don\'t hate on me.\n\n'
+	text += "PM /u/kashre001 if you have any issues ☜(⌒▽⌒)☞ \n\n"	
 	return text
 	
 #call main function
