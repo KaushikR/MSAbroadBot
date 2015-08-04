@@ -91,6 +91,8 @@ def check_comment(text):
 		return True
 	elif 'graduate school' in text.lower() :
 		return True
+	elif 'higher education' in text.lower() :
+		return True	
 	return False						
 
 
